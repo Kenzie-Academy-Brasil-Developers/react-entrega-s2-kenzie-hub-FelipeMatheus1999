@@ -1,6 +1,7 @@
 import Home from "../pages/Home";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
+import DashBoard from "../pages/DashBoard";
 import { Switch, Route } from "react-router-dom";
 
 const Routes = () => {
@@ -14,6 +15,9 @@ const Routes = () => {
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/dashboard">
+        <DashBoard />
       </Route>
     </Switch>
   );

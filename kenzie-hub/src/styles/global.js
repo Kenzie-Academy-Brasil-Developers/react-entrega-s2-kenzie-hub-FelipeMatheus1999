@@ -11,14 +11,15 @@ export default createGlobalStyle`
     :root {
         --gray: #CDCDCD;
         --purple: #7540E5;
-        --purple2: #2F2E41
+        --purple2: #2F2E41;
         --white: #FFFFFF;
         --lilac: #EDEAF0;
         --black: #000000
     }
 
     body {
-        //backgroun and color
+        background: var(--lilac);
+        font-family: inter;
     }
 
     border-style, input, button {
