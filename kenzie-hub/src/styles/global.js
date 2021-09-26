@@ -14,7 +14,8 @@ export default createGlobalStyle`
         --purple2: #2F2E41;
         --white: #FFFFFF;
         --lilac: #EDEAF0;
-        --black: #000000
+        --black: #000000;
+        --red: #E30;
     }
 
     body {

@@ -1,13 +1,14 @@
 import Button from "../../components/Button";
-import axios from "axios";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Container, Background, Content } from "./styles";
 import { Link } from "react-router-dom";
+import api from "../../services/api";
+import { toast } from "react-toastify";
 
-const Registration = () => {
+const Registration = ({ authenticated }) => {
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -20,9 +21,9 @@ const Registration = () => {
       .matches(
         "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
       ),
-    bio: yup.string().required("Email obrigatório"),
-    course_module: yup.string().required("Email obrigatório"),
-    contact: yup.string().required("Contato obrigatório")
+    bio: yup.string().required("Bio obrigatório"),
+    course_module: yup.string().required("Modulo obrigatório"),
+    contact: yup.string().required("Contato obrigatório"),
   });
 
   const history = useHistory();
@@ -36,31 +37,57 @@ const Registration = () => {
   });
 
   const handleRegister = (data) => {
-    axios
-    .post("https://kenziehub.me/users", data)
-    .then(() => history.push("/login"))
-    .catch((err) => console.log(err));
-    console.log(data)
+    api
+      .post("/users", data)
+      .then(() => {
+        toast.success("Sucesso ao criar conta");
+        return history.push("/login");
+      })
+      .catch(() => toast.error("Tente outro email"));
   };
+
+  if (authenticated) {
+    return <Redirect to={"/dashboard"} />;
+  }
 
   return (
     <Container>
       <Background />
       <Content>
         <div className="formatText">
-          <h1>Cadastro</h1>
+          <h1>Cadastre-se</h1>
         </div>
         <form onSubmit={handleSubmit(handleRegister)}>
           <input placeholder="Nome" type="text" {...register("name")} />
+          {errors.name?.message && <p className="error">Campo obrigatório</p>}
           <input placeholder="Email" type="email" {...register("email")} />
-          <input placeholder="Senha" type="password" {...register("password")} />
+          {errors.email?.message && <p className="error">Campo obrigatório</p>}
+          <input
+            placeholder="Senha"
+            type="password"
+            {...register("password")}
+          />
+          {errors.password?.message && (
+            <p className="error">Campo obrigatório</p>
+          )}
           <input placeholder="Bio" type="text" {...register("bio")} />
-          <input placeholder="Modulo" type="text" {...register("course_module")} />
+          {errors.bio?.message && <p className="error">Campo obrigatório</p>}
+          <input
+            placeholder="Modulo"
+            type="text"
+            {...register("course_module")}
+          />
+          {errors.course_module?.message && (
+            <p className="error">Campo obrigatório</p>
+          )}
           <input placeholder="Contato" type="text" {...register("contact")} />
+          {errors.contact?.message && (
+            <p className="error">Campo obrigatório</p>
+          )}
+          <Button type="submit">Cadastrar</Button>
           <p>
             Ja é cadastrado? faça seu <Link to="/login">login.</Link>
           </p>
-          <Button type="submit">Cadastrar</Button>
         </form>
       </Content>
     </Container>

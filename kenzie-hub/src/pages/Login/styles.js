@@ -17,14 +17,13 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   background: var(--gray);
-  width: 406px;
-  height: 265px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 35px;
   margin-bottom: 240px;
+  padding: 20px;
 
   form {
     display: flex;
@@ -38,13 +37,23 @@ export const Content = styled.div`
       font-size: 22px;
       border-radius: 10px;
       border: none;
-      margin-bottom: 25px;
       padding: 5px 0 0 10px;
+      margin-top: 20px;
+    }
+
+    input + input {
+      margin-bottom: 10px;
+    }
+
+    .erros {
+      font-weight: bold;
+      color: var(--red);
+      margin: 0;
     }
 
     p {
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 20px;
     }
   }
 `;

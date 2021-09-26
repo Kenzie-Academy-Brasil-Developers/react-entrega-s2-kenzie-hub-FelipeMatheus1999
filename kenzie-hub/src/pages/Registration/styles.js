@@ -26,32 +26,33 @@ export const Content = styled.div`
   form {
     background: var(--gray);
     width: 406px;
-    height: 680px;  
+    height: 600px;  
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding-top: 15px; 
     border-radius: 35px; 
     margin-bottom: 60px;
     
     input {
-      color: var(--purple2);
       width: 332px;
       height: 48px;
       font-size: 22px;
       border-radius: 10px;
       border: none;
-      margin: 20px;
       padding: 5px 0 0 10px;
+      margin-top: 10px;
     }
 
     p {
-      margin: 10px 0 5px 0;
       font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    .erros {
-      margin: 0;
+    .error {
+      color: var(--red);
+      margin: 3px 0 0 0;
     }
   }
 

@@ -6,13 +6,14 @@ export const Container = styled.button`
   width: 65%;
   height: 48px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: bold;
   border-radius: 7px;
   border: none;
   transition: 0.5s;
+  margin: 10px;
 
   :hover {
-    color: var(--purple2);
+    color: #2F2E41;
   }
 `;
