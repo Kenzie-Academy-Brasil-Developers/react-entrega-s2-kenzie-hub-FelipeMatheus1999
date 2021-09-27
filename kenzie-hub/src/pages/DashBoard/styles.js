@@ -50,22 +50,26 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100px;
+  width: 120px;
   height: 120px;
   border: 3px solid var(--purple);
   border-radius: 10px;
   margin: 10px;
-`;
 
-// terminar o botão
-// export const ButtonLogOff = styled.button`
-//   background: var(--purple2);
-//   color: var(--lilac);
-//   font-size: 20px;
-//   font-weight: bold;
-//   width: 15%;
-//   height: 5%;
-//   position: relative;
-//   border: none;
-//   border-radius: 7px;
-// `;
+  h1 {
+    color: var(--purple2);
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+
+  hr {
+    border-top: 1px solid var(--purple);
+    border-bottom: 1px solid var(--purple2);
+    width: 90%;
+  }
+
+  button {
+    height: 30px;
+    font-size: 16px;
+  }
+`;
