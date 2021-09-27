@@ -19,8 +19,6 @@ const Login = ({ authenticated, setAuthenticated }) => {
       ),
   });
 
-  const history = useHistory();
-
   const {
     register,
     handleSubmit,
@@ -34,11 +32,9 @@ const Login = ({ authenticated, setAuthenticated }) => {
       .post("/sessions", data)
       .then((res) => {
         const { token } = res.data;
-
-        setAuthenticated(true);
+        localStorage.clear();
         localStorage.setItem("@Kenziehub:token", JSON.stringify(token));
-
-        return history.push("/dashboard");
+        setAuthenticated(true);
       })
       .catch(() => toast.error("Email ou senha invalido"));
   };

@@ -14,7 +14,7 @@ const DashBoard = ({ authenticated }) => {
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:token")) || ""
   );
-  const user = jwtDecode(token);
+  const [user] = useState(jwtDecode(token));
 
   const schema = yup.object().shape({
     title: yup.string().required("Technology required"),
@@ -35,10 +35,6 @@ const DashBoard = ({ authenticated }) => {
   };
 
   const handleTechsRegister = (data) => {
-    if (!data) {
-      return toast.error("preencha os campos");
-    }
-
     api
       .post(`/users/techs`, data, {
         headers: {
@@ -50,8 +46,6 @@ const DashBoard = ({ authenticated }) => {
 
   const handleTechsRemove = (e) => {
     const id = e.target.id;
-
-    console.log(id);
 
     api
       .delete(`/users/techs/${id}`, {
@@ -65,7 +59,6 @@ const DashBoard = ({ authenticated }) => {
   const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
   const mapTechs = techs.map((value) => {
-
     return (
       <Card key={value.id}>
         <h1>{value.title}</h1>
