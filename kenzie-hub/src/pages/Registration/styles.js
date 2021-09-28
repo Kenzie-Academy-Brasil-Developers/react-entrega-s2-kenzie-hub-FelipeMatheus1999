@@ -15,7 +15,7 @@ export const Background = styled.div`
   }
 `;
 
-export const Content = styled.div`        
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,15 +26,15 @@ export const Content = styled.div`
   form {
     background: var(--gray);
     width: 406px;
-    height: 600px;  
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding-top: 15px; 
-    border-radius: 35px; 
+    padding-top: 15px;
+    border-radius: 35px;
     margin-bottom: 60px;
-    
+
     input {
       width: 332px;
       height: 48px;
@@ -62,6 +62,5 @@ export const Content = styled.div`
     font-size: 50px;
     width: 300px;
     color: var(--purple);
-
   }
 `;

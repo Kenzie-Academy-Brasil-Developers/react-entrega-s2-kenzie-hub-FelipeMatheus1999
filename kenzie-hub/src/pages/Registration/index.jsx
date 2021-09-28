@@ -43,7 +43,7 @@ const Registration = ({ authenticated }) => {
         toast.success("Sucesso ao criar conta");
         return history.push("/login");
       })
-      .catch(() => toast.error("Tente outro email"));
+      .catch(() => toast.error("Tente outro email ou email/senha invalido"));
   };
 
   if (authenticated) {
@@ -59,30 +59,36 @@ const Registration = ({ authenticated }) => {
         </div>
         <form onSubmit={handleSubmit(handleRegister)}>
           <input placeholder="Nome" type="text" {...register("name")} />
-          {errors.name?.message && <p className="error">Campo obrigatório</p>}
+          {errors.name?.message && (
+            <p className="error">{errors.name?.message}</p>
+          )}
           <input placeholder="Email" type="email" {...register("email")} />
-          {errors.email?.message && <p className="error">Campo obrigatório</p>}
+          {errors.email?.message && (
+            <p className="error">{errors.email?.message}</p>
+          )}
           <input
             placeholder="Senha"
             type="password"
             {...register("password")}
           />
           {errors.password?.message && (
-            <p className="error">Campo obrigatório</p>
+            <p className="error">Senha obrigatória</p>
           )}
           <input placeholder="Bio" type="text" {...register("bio")} />
-          {errors.bio?.message && <p className="error">Campo obrigatório</p>}
+          {errors.bio?.message && (
+            <p className="error">{errors.bio?.message}</p>
+          )}
           <input
             placeholder="Modulo"
             type="text"
             {...register("course_module")}
           />
           {errors.course_module?.message && (
-            <p className="error">Campo obrigatório</p>
+            <p className="error">{errors.course_module?.message}</p>
           )}
           <input placeholder="Contato" type="text" {...register("contact")} />
           {errors.contact?.message && (
-            <p className="error">Campo obrigatório</p>
+            <p className="error">{errors.contact?.message}</p>
           )}
           <Button type="submit">Cadastrar</Button>
           <p>
